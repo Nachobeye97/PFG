@@ -1,0 +1,2 @@
+C:\Users\Usuario\Desktop\PFC\GrammaGo\grammago.client\obj\Debug\grammago.client.esproj.CoreCompileInputs.cache
+C:\Users\ignacio.sanchez\source\repos\GrammaGo\grammago.client\obj\Debug\grammago.client.esproj.CoreCompileInputs.cache
