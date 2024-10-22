@@ -7,14 +7,34 @@ const Register = ({ darkMode }) => {
   const [surname, setSurname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false); 
-  const navigate = useNavigate();
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    setLoading(true); 
-    setError(''); 
+    setLoading(true);
+    setError('');
+
+    if (password.length < 6) {
+      setError("La contraseña debe tener al menos 6 caracteres.");
+      setLoading(false);
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError('Las contraseñas no coinciden.');
+      setLoading(false);
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError('Por favor, ingresa un correo electrónico válido.');
+      setLoading(false);
+      return;
+    }
 
     try {
       const response = await fetch('/api/user/register', {
@@ -23,24 +43,24 @@ const Register = ({ darkMode }) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          nombre: name, 
-          apellido: surname, 
-          correoElectronico: email, 
-          contrasenaHash: password, 
+          nombre: name,
+          apellido: surname,
+          correoElectronico: email,
+          contrasenaHash: password,
         }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        navigate('/login'); 
+        navigate('/login');
       } else {
-        setError(data.message || 'Error en el registro'); 
+        setError(data.message || 'Error en el registro');
       }
     } catch (error) {
-      setError('Error en la conexión'); 
+      setError('Error en la conexión');
     } finally {
-      setLoading(false); 
+      setLoading(false);
     }
   };
 
@@ -54,6 +74,7 @@ const Register = ({ darkMode }) => {
           onChange={(e) => setName(e.target.value)}
           placeholder="Nombre"
           required
+          disabled={loading}
         />
         <input
           type="text"
@@ -61,6 +82,7 @@ const Register = ({ darkMode }) => {
           onChange={(e) => setSurname(e.target.value)}
           placeholder="Apellidos"
           required
+          disabled={loading}
         />
         <input
           type="email"
@@ -68,6 +90,7 @@ const Register = ({ darkMode }) => {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Correo electrónico"
           required
+          disabled={loading}
         />
         <input
           type="password"
@@ -75,11 +98,20 @@ const Register = ({ darkMode }) => {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Contraseña"
           required
+          disabled={loading}
+        />
+        <input
+          type="password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          placeholder="Confirmar contraseña"
+          required
+          disabled={loading}
         />
         <button type="submit" disabled={loading}>
-          {loading ? 'Registrando...' : 'Registrarse'} 
+          {loading ? 'Registrando...' : 'Registrarse'}
         </button>
-        {error && <p className="error">{error}</p>} 
+        {error && <p className="error">{error}</p>}
       </form>
 
       <p>

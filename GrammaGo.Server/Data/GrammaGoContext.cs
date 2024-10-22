@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using GrammaGo.Server.Models; 
-using GrammaGo.Server.Data;  // Ajusta esto según el namespace real de GrammaGoContext
+using GrammaGo.Server.Data;  
 
 
 namespace GrammaGo.Server.Data

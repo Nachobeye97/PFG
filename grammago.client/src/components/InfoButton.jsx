@@ -12,6 +12,8 @@ const InfoButton = ({ darkMode }) => {
     <div
       className={`info-button-container ${isFlipped ? 'flipped' : ''} ${darkMode ? 'dark' : ''}`}
       onClick={handleFlip}
+      aria-expanded={isFlipped} 
+      role="button"
     >
       <div className="info-button-front">
         <button className="info-button-front">Info</button>

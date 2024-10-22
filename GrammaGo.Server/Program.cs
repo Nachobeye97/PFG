@@ -1,8 +1,9 @@
-using GrammaGo.Server.Data;  // Ajusta esto según el namespace real de GrammaGoContext
+using GrammaGo.Server.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configurar base de datos
 builder.Services.AddDbContext<GrammaGoContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -22,10 +23,19 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Configurar autenticación (ejemplo con JWT)
+builder.Services.AddAuthentication("Bearer")
+    .AddJwtBearer("Bearer", options =>
+    {
+        options.Authority = "https://your-auth-domain";
+        options.Audience = "your-api-audience";
+    });
+
 var app = builder.Build();
 
-app.UseDefaultFiles();
-app.UseStaticFiles();
+// Middleware de autenticación y autorización
+app.UseAuthentication();
+app.UseAuthorization();
 
 // Configuración del pipeline de la solicitud HTTP
 if (app.Environment.IsDevelopment())
@@ -35,14 +45,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-// Habilitar CORS para todas las solicitudes
-app.UseCors("AllowAll");
-
-app.UseAuthorization();
+app.UseStaticFiles();
+app.UseCors("AllowAll"); // Usar la política CORS que permite todas las solicitudes
 
 app.MapControllers();
-
 app.MapFallbackToFile("/index.html");
 
 app.Run();

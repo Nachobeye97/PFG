@@ -1,18 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const ThemeToggle = () => {
-  const [darkMode, setDarkMode] = useState(false); 
+const ThemeToggle = ({ darkMode, setDarkMode }) => {
 
-  
+  React.useEffect(() => {
+    const savedTheme = localStorage.getItem('darkMode') === 'true';
+    setDarkMode(savedTheme);
+    document.body.classList.toggle('dark-mode', savedTheme);
+  }, []);
+
   const toggleTheme = () => {
-    setDarkMode(!darkMode);
-    
-    document.body.classList.toggle('dark-mode', !darkMode);
+    const newTheme = !darkMode;
+    setDarkMode(newTheme);
+    document.body.classList.toggle('dark-mode', newTheme);
+    localStorage.setItem('darkMode', newTheme);
   };
 
   return (
     <button
       onClick={toggleTheme}
+      aria-label={darkMode ? 'Activar modo claro' : 'Activar modo oscuro'}
       style={{
         position: 'absolute',
         top: '20px',

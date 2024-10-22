@@ -12,6 +12,7 @@
   <ItemGroup>
     <!-- Paquetes necesarios para hashing y autenticación -->
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.10" />
     <!-- ASP.NET Core, MVC (no especificamos la versión para que use la que viene por defecto con .NET 8) -->
     <PackageReference Include="Microsoft.AspNetCore.Mvc">
       <Version>2.2.0</Version>

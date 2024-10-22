@@ -290,3 +290,5 @@ C:\Users\ignacio.sanchez\source\repos\GrammaGo\GrammaGo.Server\obj\Debug\net8.0\
 C:\Users\ignacio.sanchez\source\repos\GrammaGo\GrammaGo.Server\obj\Debug\net8.0\GrammaGo.Server.pdb
 C:\Users\ignacio.sanchez\source\repos\GrammaGo\GrammaGo.Server\obj\Debug\net8.0\GrammaGo.Server.genruntimeconfig.cache
 C:\Users\ignacio.sanchez\source\repos\GrammaGo\GrammaGo.Server\obj\Debug\net8.0\ref\GrammaGo.Server.dll
+C:\Users\ignacio.sanchez\source\repos\GrammaGo\GrammaGo.Server\obj\Debug\net8.0\GrammaGo.Server.sourcelink.json
+C:\Users\ignacio.sanchez\source\repos\GrammaGo\GrammaGo.Server\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

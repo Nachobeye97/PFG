@@ -29,8 +29,9 @@ const Login = ({ darkMode }) => {
       });
 
       if (response.ok) {
-        
-        navigate('/main');
+        const data = await response.json(); 
+        localStorage.setItem('userId', data.userId); 
+        navigate('/main'); 
       } else {
         const errorMessage = await response.text();
         setError(errorMessage || 'Error en el inicio de sesión.'); 
@@ -52,6 +53,7 @@ const Login = ({ darkMode }) => {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Correo electrónico"
           required
+          disabled={loading} 
         />
         <input
           type="password"
@@ -59,6 +61,7 @@ const Login = ({ darkMode }) => {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Contraseña"
           required
+          disabled={loading} 
         />
         <button type="submit" disabled={loading}>
           {loading ? 'Iniciando...' : 'Login'}
