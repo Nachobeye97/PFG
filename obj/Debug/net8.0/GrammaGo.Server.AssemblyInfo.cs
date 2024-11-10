@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GrammaGo.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c88ea62d439a98f10da0730113e4acb7c0151914")]
 [assembly: System.Reflection.AssemblyProductAttribute("GrammaGo.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GrammaGo.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

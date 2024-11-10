@@ -443,3 +443,4 @@ C:\Users\Usuario\Desktop\PFC\PFG-main\GrammaGo.Server\obj\Debug\net8.0\GrammaGo.
 C:\Users\Usuario\Desktop\PFC\PFG-main\GrammaGo.Server\obj\Debug\net8.0\ref\GrammaGo.Server.dll
 C:\Users\Usuario\Desktop\PFC\PFG-main\GrammaGo.Server\bin\Debug\net8.0\Microsoft.AspNetCore.Authorization.dll
 C:\Users\Usuario\Desktop\PFC\PFG-main\GrammaGo.Server\bin\Debug\net8.0\Microsoft.AspNetCore.Metadata.dll
+C:\Users\Usuario\Desktop\PFC\PFG-main\GrammaGo.Server\obj\Debug\net8.0\GrammaGo.Server.sourcelink.json
